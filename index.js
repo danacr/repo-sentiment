@@ -49,8 +49,8 @@ async function userComments(user, num) {
   return comments;
 }
 
-async function average(user) {
-  res = await userComments(user, 100);
+async function average(user, num) {
+  res = await userComments(user, num);
   var sentsum = 0;
   var sentcount = 0;
   for (let x of res.user.issueComments.nodes) {
@@ -70,4 +70,4 @@ async function average(user) {
   );
   return [sentsum, sentcount, sentsum / sentcount];
 }
-average(process.argv[3]);
+average(process.argv[3], parseInt(process.argv[4]));
